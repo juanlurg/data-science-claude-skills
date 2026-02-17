@@ -24,14 +24,20 @@ These are [Claude Code skills](https://docs.anthropic.com/en/docs/claude-code) i
 
 ## Installation
 
-```bash
-claude plugin add /path/to/data-science-skills
+Inside a Claude Code session, run:
+
+```
+/install-plugin gh:juanlurg/data-science-claude-skills
 ```
 
-Or run Claude Code with the plugin directory:
+Or clone and install locally:
 
 ```bash
-claude --plugin-dir /path/to/data-science-skills
+git clone https://github.com/juanlurg/data-science-claude-skills.git
+```
+
+```
+/install-plugin /path/to/data-science-claude-skills
 ```
 
 ## Skills
