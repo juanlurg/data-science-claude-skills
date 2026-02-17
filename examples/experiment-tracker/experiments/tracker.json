@@ -1,0 +1,168 @@
+[
+  {
+    "run_id": 1,
+    "timestamp": "2025-03-10T09:15:32Z",
+    "model": "LinearRegression",
+    "params": {
+      "fit_intercept": true,
+      "normalize": false
+    },
+    "metrics": {
+      "mae": 3842.15,
+      "rmse": 5210.44,
+      "r2": 0.621,
+      "training_time_s": 0.8
+    },
+    "script_hash": "a1b2c3d4",
+    "notes": "Baseline model on raw features. No feature engineering."
+  },
+  {
+    "run_id": 2,
+    "timestamp": "2025-03-10T10:02:17Z",
+    "model": "Ridge",
+    "params": {
+      "alpha": 1.0,
+      "fit_intercept": true,
+      "solver": "auto"
+    },
+    "metrics": {
+      "mae": 3798.33,
+      "rmse": 5145.20,
+      "r2": 0.631,
+      "training_time_s": 1.1
+    },
+    "script_hash": "a1b2c3d4",
+    "notes": "Ridge with default alpha. Slight improvement over baseline."
+  },
+  {
+    "run_id": 3,
+    "timestamp": "2025-03-10T14:30:45Z",
+    "model": "RandomForest",
+    "params": {
+      "n_estimators": 100,
+      "max_depth": null,
+      "min_samples_split": 2,
+      "min_samples_leaf": 1,
+      "max_features": "sqrt"
+    },
+    "metrics": {
+      "mae": 2156.78,
+      "rmse": 3102.55,
+      "r2": 0.866,
+      "training_time_s": 12.4
+    },
+    "script_hash": "e5f6g7h8",
+    "notes": "Default RF. Big jump in performance. Added one-hot encoding for brand and fuel_type."
+  },
+  {
+    "run_id": 4,
+    "timestamp": "2025-03-11T08:45:12Z",
+    "model": "RandomForest",
+    "params": {
+      "n_estimators": 500,
+      "max_depth": 20,
+      "min_samples_split": 5,
+      "min_samples_leaf": 2,
+      "max_features": "sqrt"
+    },
+    "metrics": {
+      "mae": 1987.42,
+      "rmse": 2876.31,
+      "r2": 0.885,
+      "training_time_s": 58.3
+    },
+    "script_hash": "e5f6g7h8",
+    "notes": "Tuned RF. More trees + depth cap reduces overfitting. Added mileage_per_year feature."
+  },
+  {
+    "run_id": 5,
+    "timestamp": "2025-03-11T11:20:00Z",
+    "model": "GradientBoosting",
+    "params": {
+      "n_estimators": 300,
+      "learning_rate": 0.1,
+      "max_depth": 5,
+      "subsample": 0.8,
+      "min_samples_leaf": 10
+    },
+    "metrics": {
+      "mae": 1845.90,
+      "rmse": 2690.12,
+      "r2": 0.899,
+      "training_time_s": 34.7
+    },
+    "script_hash": "i9j0k1l2",
+    "notes": "sklearn GBR. Strong results. Same feature set as run 4."
+  },
+  {
+    "run_id": 6,
+    "timestamp": "2025-03-12T09:05:33Z",
+    "model": "XGBoost",
+    "params": {
+      "n_estimators": 500,
+      "learning_rate": 0.05,
+      "max_depth": 6,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "reg_alpha": 0.1,
+      "reg_lambda": 1.0
+    },
+    "metrics": {
+      "mae": 1612.34,
+      "rmse": 2345.88,
+      "r2": 0.923,
+      "training_time_s": 22.1
+    },
+    "script_hash": "m3n4o5p6",
+    "notes": "XGBoost with regularization. Added log-transform on price target. Best so far."
+  },
+  {
+    "run_id": 7,
+    "timestamp": "2025-03-12T15:40:18Z",
+    "model": "LightGBM",
+    "params": {
+      "n_estimators": 800,
+      "learning_rate": 0.03,
+      "num_leaves": 31,
+      "max_depth": -1,
+      "subsample": 0.7,
+      "colsample_bytree": 0.7,
+      "reg_alpha": 0.05,
+      "reg_lambda": 0.5,
+      "min_child_samples": 20
+    },
+    "metrics": {
+      "mae": 1578.21,
+      "rmse": 2298.45,
+      "r2": 0.926,
+      "training_time_s": 8.9
+    },
+    "script_hash": "m3n4o5p6",
+    "notes": "LightGBM with same feature pipeline as XGBoost. Slightly better and 2.5x faster training."
+  },
+  {
+    "run_id": 8,
+    "timestamp": "2025-03-13T10:15:55Z",
+    "model": "LightGBM",
+    "params": {
+      "n_estimators": 1200,
+      "learning_rate": 0.01,
+      "num_leaves": 63,
+      "max_depth": -1,
+      "subsample": 0.75,
+      "colsample_bytree": 0.75,
+      "reg_alpha": 0.1,
+      "reg_lambda": 1.0,
+      "min_child_samples": 15,
+      "feature_fraction_seed": 42
+    },
+    "metrics": {
+      "mae": 1534.67,
+      "rmse": 2245.10,
+      "r2": 0.930,
+      "training_time_s": 15.2
+    },
+    "script_hash": "q7r8s9t0",
+    "notes": "Final LightGBM. Lower LR + more trees + target encoding for brand. Best overall. R2=0.93."
+  }
+]
