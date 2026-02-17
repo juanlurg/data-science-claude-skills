@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "data-science",
-      "source": ".",
+      "source": "./",
       "description": "Data science skills for Claude Code: exploratory analysis, experiment tracking, data quality diagnostics, paper implementation, and SQL optimization"
     }
   ]
