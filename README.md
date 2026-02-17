@@ -24,20 +24,18 @@ These are [Claude Code skills](https://docs.anthropic.com/en/docs/claude-code) i
 
 ## Installation
 
-Inside a Claude Code session, run:
+Inside a Claude Code session, add the marketplace and install:
 
 ```
-/install-plugin gh:juanlurg/data-science-claude-skills
+/plugin marketplace add juanlurg/data-science-claude-skills
+/plugin install data-science@data-science-claude-skills
 ```
 
-Or clone and install locally:
+Or clone and load locally for development:
 
 ```bash
 git clone https://github.com/juanlurg/data-science-claude-skills.git
-```
-
-```
-/install-plugin /path/to/data-science-claude-skills
+claude --plugin-dir ./data-science-claude-skills
 ```
 
 ## Skills

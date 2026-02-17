@@ -1,0 +1,16 @@
+{
+  "name": "data-science-claude-skills",
+  "owner": {
+    "name": "juanlu"
+  },
+  "metadata": {
+    "description": "Notebook-first data science skills for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "data-science",
+      "source": ".",
+      "description": "Data science skills for Claude Code: exploratory analysis, experiment tracking, data quality diagnostics, paper implementation, and SQL optimization"
+    }
+  ]
+}
