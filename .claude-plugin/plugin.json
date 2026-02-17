@@ -1,0 +1,10 @@
+{
+  "name": "data-science",
+  "description": "Data science skills for Claude Code: exploratory analysis, experiment tracking, data quality diagnostics, paper implementation, and SQL optimization",
+  "version": "0.1.0",
+  "author": {
+    "name": "juanlu"
+  },
+  "license": "MIT",
+  "keywords": ["data-science", "eda", "ml", "experiment-tracking", "sql", "notebooks"]
+}
